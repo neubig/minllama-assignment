@@ -33,20 +33,32 @@ python3 run_llama.py --option [generate/prompt/finetune] --epochs 5 --lr 2e-5 --
 *Text Continuation* (`python run_llama.py --option generate`)
 You should see continuations of the sentence `I have wanted to see this thriller for a while, and it didn't disappoint. Keanu Reeves, playing the hero John Wick, is...`. We will generate two continuations - one with temperature 0.0 (which should have a reasonably coherent, if unusual, completion) and one with temperature 1.0 (which is likely to be logically inconsistent and may contain some coherence or grammar errors).
 
-*Zero Shot Prompting* (`python run_llama.py ... --option prompt`)
+*Zero Shot Prompting*
 Zero-Shot Prompting for SST:
+
+`python run_llama.py --option prompt --epochs 5 --lr 2e-5 --batch_size 10  --train data/sst-train.txt --dev data/sst-dev.txt --test data/sst-test.txt --label-names data/sst-label-mapping.json --dev-out sst-dev-prompting-output.txt --test-out sst-dev-prompting-output.txt [--use-gpu]`
+
+Prompting for SST:
 Dev Accuracy: 0.235 (0.000)
 Test Accuracy: 0.234 (0.000)
 
 Zero-Shot Prompting for CFIMDB:
+
+`python run_llama.py --option prompt --epochs 5 --lr 2e-5 --batch_size 10  --train data/cfimdb-train.txt --dev data/cfimdb-dev.txt --test data/cfimdb-test.txt --label-names data/cfimdb-label-mapping.json --dev-out cfimdb-dev-prompting-output.txt --test-out cfimdb-test-prompting-output.txt [--use-gpu]`
+
+Prompting for CFIMDB:
 Dev Accuracy: 0.498 (0.000)
 Test Accuracy: -
 
-*Classification Finetuning* (`python run_llama.py ... --option finetune`)
+*Classification Finetuning*
+
+`python run_llama.py --option finetune --epochs 5 --lr 2e-5 --batch_size 80  --train data/sst-train.txt --dev data/sst-dev.txt --test data/sst-test.txt --label-names data/sst-label-mapping.json --dev-out sst-dev-finetuning-output.txt --test-out sst-test-finetuning-output.txt [--use-gpu]`
 
 Finetuning for SST:
 Dev Accuracy: 0.414 (0.014)
 Test Accuracy: 0.418 (0.017)
+
+`python run_llama.py --option finetune --epochs 5 --lr 2e-5 --batch_size 10  --train data/cfimdb-train.txt --dev data/cfimdb-dev.txt --test data/cfimdb-test.txt --label-names data/cfimdb-label-mapping.json --dev-out cfimdb-dev-finetuning-output.txt --test-out cfimdb-test-finetuning-output.txt [--use-gpu]`
 
 Finetuning for CFIMDB:
 Dev Accuracy: 0.800 (0.115)
@@ -88,7 +100,7 @@ ANDREWID/
 ├── cfimdb-test-prompting-output.txt
 ├── cfimdb-dev-finetuning-output.txt
 ├── cfimdb-test-finetuning-output.txt
-└── setup.py
+└── setup.sh
 ```
 
 `prepare_submit.py` can help to create(1) or check(2) the to-be-submitted zip file. It
