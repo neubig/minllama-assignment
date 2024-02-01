@@ -36,7 +36,7 @@ You should see continuations of the sentence `I have wanted to see this thriller
 *Zero Shot Prompting*
 Zero-Shot Prompting for SST:
 
-`python run_llama.py --option prompt --epochs 5 --lr 2e-5 --batch_size 10  --train data/sst-train.txt --dev data/sst-dev.txt --test data/sst-test.txt --label-names data/sst-label-mapping.json --dev_out sst-dev-prompting-output.txt --test_out sst-test-prompting-output.txt [--use_gpu]`
+`python run_llama.py --option prompt --batch_size 10  --train data/sst-train.txt --dev data/sst-dev.txt --test data/sst-test.txt --label-names data/sst-label-mapping.json --dev_out sst-dev-prompting-output.txt --test_out sst-test-prompting-output.txt [--use_gpu]`
 
 Prompting for SST:
 Dev Accuracy: 0.235 (0.000)
@@ -44,7 +44,7 @@ Test Accuracy: 0.234 (0.000)
 
 Zero-Shot Prompting for CFIMDB:
 
-`python run_llama.py --option prompt --epochs 5 --lr 2e-5 --batch_size 10  --train data/cfimdb-train.txt --dev data/cfimdb-dev.txt --test data/cfimdb-test.txt --label-names data/cfimdb-label-mapping.json --dev_out cfimdb-dev-prompting-output.txt --test_out cfimdb-test-prompting-output.txt [--use_gpu]`
+`python run_llama.py --option prompt --batch_size 10  --train data/cfimdb-train.txt --dev data/cfimdb-dev.txt --test data/cfimdb-test.txt --label-names data/cfimdb-label-mapping.json --dev_out cfimdb-dev-prompting-output.txt --test_out cfimdb-test-prompting-output.txt [--use_gpu]`
 
 Prompting for CFIMDB:
 Dev Accuracy: 0.498 (0.000)
