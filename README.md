@@ -29,7 +29,7 @@ python3 run_llama.py --option [generate/prompt/finetune] --epochs 5 --lr 2e-5 --
 ## Reference outputs/accuracies: 
 
 *Text Continuation* (`python run_llama.py --option generate`)
-
+You should see continuations of the sentence `I have wanted to see this thriller for a while, and it didn't disappoint. Keanu Reeves, playing the hero John Wick, is...`. We will generate two continuations - one with temperature 0.0 (which should have a reasonably coherent, if unusual, completion) and one with temperature 1.0 (which is likely to be logically inconsistent and may contain some coherence or grammar errors).
 
 *Zero Shot Prompting* (`python run_llama.py ... --option prompt`)
 Zero-Shot Prompting for SST:
