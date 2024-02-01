@@ -36,7 +36,7 @@ You should see continuations of the sentence `I have wanted to see this thriller
 *Zero Shot Prompting*
 Zero-Shot Prompting for SST:
 
-`python run_llama.py --option prompt --epochs 5 --lr 2e-5 --batch_size 10  --train data/sst-train.txt --dev data/sst-dev.txt --test data/sst-test.txt --label-names data/sst-label-mapping.json --dev-out sst-dev-prompting-output.txt --test-out sst-dev-prompting-output.txt [--use-gpu]`
+`python run_llama.py --option prompt --epochs 5 --lr 2e-5 --batch_size 10  --train data/sst-train.txt --dev data/sst-dev.txt --test data/sst-test.txt --label-names data/sst-label-mapping.json --dev-out sst-dev-prompting-output.txt --test-out sst-test-prompting-output.txt [--use-gpu]`
 
 Prompting for SST:
 Dev Accuracy: 0.235 (0.000)
