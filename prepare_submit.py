@@ -6,7 +6,20 @@ import os
 import sys
 import zipfile
 
-required_files = {'run_llama.py', 'llama.py', 'optimizer.py', 'classifier.py', 'generated-sentence-temp-0.txt', 'generated-sentence-temp-1.txt', 'sst-dev-output.txt', 'sst-test-output.txt', 'cfimdb-dev-output.txt', 'cfimdb-test-output.txt'}
+required_files = {'run_llama.py',
+                  'llama.py',
+                  'optimizer.py',
+                  'classifier.py',
+                  'generated-sentence-temp-0.txt',
+                  'generated-sentence-temp-1.txt',
+                  'sst-dev-prompting-output.txt',
+                  'sst-test-prompting-output.txt',
+                  'sst-dev-finetuning-output.txt',
+                  'sst-test-finetuning-output.txt',
+                  'cfimdb-dev-prompting-output.txt',
+                  'cfimdb-test-prompting-output.txt',
+                  'cfimdb-dev-finetuning-output.txt',
+                  'cfimdb-test-finetuning-output.txt'}
 
 def check_file(file: str, check_aid: str):
     target_prefix = None

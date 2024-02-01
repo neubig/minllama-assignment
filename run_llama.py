@@ -228,7 +228,8 @@ def write_predictions_to_file(split: str, outfile: str, acc: float, pred: list[s
 			f.write(f"{p} ||| {s}\n")
 
 def test_with_prompting(args):
-
+	assert args.dev_out.endswith("dev-prompting-output.txt"), 'For saving prompting results, please set the dev_out argument as "<dataset>-dev-prompting-output.txt"'
+	assert args.test_out.endswith("test-prompting-output.txt"), 'For saving prompting results, please set the test_out argument as "<dataset>-test-prompting-output.txt"'
 
 	with torch.no_grad():
 
@@ -271,6 +272,8 @@ def test_with_prompting(args):
 		write_predictions_to_file("test", args.test_out, test_acc, test_pred, test_sents)
 
 def test(args):
+	assert args.dev_out.endswith("dev-finetuning-output.txt"), 'For saving finetuning results, please set the dev_out argument as "<dataset>-dev-finetuning-output.txt"'
+	assert args.test_out.endswith("test-finetuning-output.txt"), 'For saving finetuning results, please set the test_out argument as "<dataset>-test-finetuning-output.txt"'
 	with torch.no_grad():
 		device = torch.device('cuda') if args.use_gpu else torch.device('cpu')
 		saved = torch.load(args.filepath)
@@ -310,8 +313,8 @@ def get_args():
 	parser.add_argument("--use_gpu", action='store_true')
 	parser.add_argument("--generated_sentence_low_temp_out", type=str, default="generated-sentence-temp-0.txt")
 	parser.add_argument("--generated_sentence_high_temp_out", type=str, default="generated-sentence-temp-1.txt")
-	parser.add_argument("--dev_out", type=str, default="cfimdb-dev-output.txt")
-	parser.add_argument("--test_out", type=str, default="cfimdb-test-output.txt")
+	parser.add_argument("--dev_out", type=str, default="cfimdb-dev-prompting-output.txt")
+	parser.add_argument("--test_out", type=str, default="cfimdb-test-prompting-output.txt")
 
 	# hyper parameters
 	parser.add_argument("--batch_size", help='sst: 64, cfimdb: 8 can fit a 12GB GPU', type=int, default=8)

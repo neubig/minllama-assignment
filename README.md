@@ -80,10 +80,14 @@ ANDREWID/
 ├── sanity_check.data
 ├── generated-sentence-temp-0.txt
 ├── generated-sentence-temp-1.txt
-├── sst-dev-output.txt 
-├── sst-test-output.txt 
-├── cfimdb-dev-output.txt 
-├── cfimdb-test-output.txt 
+├── sst-dev-prompting-output.txt
+├── sst-test-prompting-output.txt
+├── sst-dev-finetuning-output.txt
+├── sst-test-finetuning-output.txt
+├── cfimdb-dev-prompting-output.txt
+├── cfimdb-test-prompting-output.txt
+├── cfimdb-dev-finetuning-output.txt
+├── cfimdb-test-finetuning-output.txt
 └── setup.py
 ```
 
