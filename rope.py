@@ -58,7 +58,7 @@ def apply_rotary_emb(
 
     # reshape xq and xk to match the complex representation
     query_real, query_imag = query.float().reshape(query.shape[:-1] + (-1, 2)).unbind(-1)
-    query_real, key_imag = key.float().reshape(key.shape[:-1] + (-1, 2)).unbind(-1)
+    key_real, key_imag = key.float().reshape(key.shape[:-1] + (-1, 2)).unbind(-1)
 
     # First, compute the trigonometric values in the second and fourth columns in
     # slide 22 (linked above).
