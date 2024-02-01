@@ -53,7 +53,7 @@ def apply_rotary_emb(
     device = query.device
     # todo
     #
-    # Please refer to slide 22 in https://phontron.com/class/anlp2024/assets/slides/anlp05transformers.pdf.
+    # Please refer to slide 22 in https://phontron.com/class/anlp2024/assets/slides/anlp-05-transformers.pdf.
     # You may also benefit from https://blog.eleuther.ai/rotaryembeddings/.
 
     # reshape xq and xk to match the complex representation
