@@ -36,7 +36,7 @@ You should see continuations of the sentence `I have wanted to see this thriller
 *Zero Shot Prompting*
 Zero-Shot Prompting for SST:
 
-`python run_llama.py --option prompt --epochs 5 --lr 2e-5 --batch_size 10  --train data/sst-train.txt --dev data/sst-dev.txt --test data/sst-test.txt --label-names data/sst-label-mapping.json --dev_out sst-dev-prompting-output.txt --test_out sst-test-prompting-output.txt [--use-gpu]`
+`python run_llama.py --option prompt --epochs 5 --lr 2e-5 --batch_size 10  --train data/sst-train.txt --dev data/sst-dev.txt --test data/sst-test.txt --label-names data/sst-label-mapping.json --dev_out sst-dev-prompting-output.txt --test_out sst-test-prompting-output.txt [--use_gpu]`
 
 Prompting for SST:
 Dev Accuracy: 0.235 (0.000)
@@ -44,7 +44,7 @@ Test Accuracy: 0.234 (0.000)
 
 Zero-Shot Prompting for CFIMDB:
 
-`python run_llama.py --option prompt --epochs 5 --lr 2e-5 --batch_size 10  --train data/cfimdb-train.txt --dev data/cfimdb-dev.txt --test data/cfimdb-test.txt --label-names data/cfimdb-label-mapping.json --dev_out cfimdb-dev-prompting-output.txt --test_out cfimdb-test-prompting-output.txt [--use-gpu]`
+`python run_llama.py --option prompt --epochs 5 --lr 2e-5 --batch_size 10  --train data/cfimdb-train.txt --dev data/cfimdb-dev.txt --test data/cfimdb-test.txt --label-names data/cfimdb-label-mapping.json --dev_out cfimdb-dev-prompting-output.txt --test_out cfimdb-test-prompting-output.txt [--use_gpu]`
 
 Prompting for CFIMDB:
 Dev Accuracy: 0.498 (0.000)
@@ -52,13 +52,13 @@ Test Accuracy: -
 
 *Classification Finetuning*
 
-`python run_llama.py --option finetune --epochs 5 --lr 2e-5 --batch_size 80  --train data/sst-train.txt --dev data/sst-dev.txt --test data/sst-test.txt --label-names data/sst-label-mapping.json --dev_out sst-dev-finetuning-output.txt --test_out sst-test-finetuning-output.txt [--use-gpu]`
+`python run_llama.py --option finetune --epochs 5 --lr 2e-5 --batch_size 80  --train data/sst-train.txt --dev data/sst-dev.txt --test data/sst-test.txt --label-names data/sst-label-mapping.json --dev_out sst-dev-finetuning-output.txt --test_out sst-test-finetuning-output.txt [--use_gpu]`
 
 Finetuning for SST:
 Dev Accuracy: 0.414 (0.014)
 Test Accuracy: 0.418 (0.017)
 
-`python run_llama.py --option finetune --epochs 5 --lr 2e-5 --batch_size 10  --train data/cfimdb-train.txt --dev data/cfimdb-dev.txt --test data/cfimdb-test.txt --label-names data/cfimdb-label-mapping.json --dev_out cfimdb-dev-finetuning-output.txt --test_out cfimdb-test-finetuning-output.txt [--use-gpu]`
+`python run_llama.py --option finetune --epochs 5 --lr 2e-5 --batch_size 10  --train data/cfimdb-train.txt --dev data/cfimdb-dev.txt --test data/cfimdb-test.txt --label-names data/cfimdb-label-mapping.json --dev_out cfimdb-dev-finetuning-output.txt --test_out cfimdb-test-finetuning-output.txt [--use_gpu]`
 
 Finetuning for CFIMDB:
 Dev Accuracy: 0.800 (0.115)
