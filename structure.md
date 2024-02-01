@@ -39,7 +39,7 @@ Components that require your implementations are comment with ```#todo```. The d
 * ```llama.RMSNorm.norm```
 * ```llama.Llama.forward```
 * ```llama.Llama.generate```
-* ```rope.apply_rotary_emb``` (this one may be tricky! you can use `RoPE_test.py` to test your implementation)
+* ```rope.apply_rotary_emb``` (this one may be tricky! you can use `rope_test.py` to test your implementation)
 * ```optimizer.AdamW.step```
 * ```classifier.LlamaEmbeddingClassifier.forward```
 
