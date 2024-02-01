@@ -54,7 +54,7 @@ def apply_rotary_emb(
     # todo
     #
     # Please refer to slide 22 in https://phontron.com/class/anlp2024/assets/slides/anlp-05-transformers.pdf.
-    # You may also benefit from https://blog.eleuther.ai/rotaryembeddings/.
+    # You may also benefit from https://blog.eleuther.ai/rotary-embeddings/.
 
     # reshape xq and xk to match the complex representation
     query_real, query_imag = query.float().reshape(query.shape[:-1] + (-1, 2)).unbind(-1)
