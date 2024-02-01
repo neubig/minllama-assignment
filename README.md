@@ -39,8 +39,8 @@ Zero-Shot Prompting for SST:
 `python run_llama.py --option prompt --batch_size 10  --train data/sst-train.txt --dev data/sst-dev.txt --test data/sst-test.txt --label-names data/sst-label-mapping.json --dev_out sst-dev-prompting-output.txt --test_out sst-test-prompting-output.txt [--use_gpu]`
 
 Prompting for SST:
-Dev Accuracy: 0.235 (0.000)
-Test Accuracy: 0.234 (0.000)
+Dev Accuracy: 0.213 (0.000)
+Test Accuracy: 0.224 (0.000)
 
 Zero-Shot Prompting for CFIMDB:
 
