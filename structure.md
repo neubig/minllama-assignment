@@ -3,7 +3,7 @@
 ## llama.py
 This file contains the Llama2 model whose backbone is the [transformer](https://arxiv.org/pdf/1706.03762.pdf). We recommend walking through Section 3 of the paper to understand each component of the transformer. 
 
-### SelfAttention
+### Attention
 The multi-head attention layer of the transformer. This layer maps a query and a set of key-value pairs to an output. The output is calculated as the weighted sum of the values, where the weight of each value is computed by a function that takes the query and the corresponding key. To implement this layer, you can:
 1. linearly project the queries, keys, and values with their corresponding linear layers
 2. split the vectors for multi-head attention
@@ -11,6 +11,8 @@ The multi-head attention layer of the transformer. This layer maps a query and a
 4. concatenate multi-head attention outputs to recover the original shape
 
 $$Attention(Q,K,V)=softmax(\frac{QK^T}{\sqrt{d_k}})V$$
+
+Llama2 uses a modified version of this procedure called [Grouped-Query Attention](https://arxiv.org/abs/2305.13245) where, instead of each attention head having its own "query", "key", and "vector" head, some groups of "query" heads share the same "key" and "vector" heads. To simplify your implementation, we've taken care of steps #1, 2, and 4 here; you only need to follow the equation to compute the attended output of each head.
 
 ### LlamaLayer
 This corresponds to one transformer layer which has 
