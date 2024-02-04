@@ -8,7 +8,7 @@ pip install tqdm==4.66.1
 pip install requests==2.31.0
 pip install importlib-metadata==3.7.0
 pip install filelock==3.0.12
-pip install sklearn==1.2.2
+pip install scikit-learn==1.2.2
 pip install numpy==1.26.3
 pip install tokenizers==0.13.3
 wget https://www.cs.cmu.edu/~vijayv/stories42M.pt
