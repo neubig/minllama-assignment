@@ -3,6 +3,10 @@
 conda create -n llama_hw python=3.11
 conda activate llama_hw
 
+# Modify this command depending on your system's environment.
+# As written, this command assumes you have CUDA on your machine, but
+# refer to https://pytorch.org/get-started/previous-versions/ for the correct
+# command for your system.
 conda install pytorch==2.1.2 torchvision==0.16.2 torchaudio==2.1.2 pytorch-cuda=11.8 -c pytorch -c nvidia
 pip install tqdm==4.66.1
 pip install requests==2.31.0
