@@ -306,7 +306,7 @@ def get_args():
 	parser.add_argument("--pretrained-model-path", type=str, default="stories42M.pt")
 	parser.add_argument("--max_sentence_len", type=int, default=None)
 	parser.add_argument("--seed", type=int, default=1337)
-	parser.add_argument("--epochs", type=int, default=10)
+	parser.add_argument("--epochs", type=int, default=5)
 	parser.add_argument("--option", type=str,
 						help='prompt: the Llama parameters are frozen; finetune: Llama parameters are updated',
 						choices=('generate', 'prompt', 'finetune'), default="generate")
@@ -320,7 +320,7 @@ def get_args():
 	parser.add_argument("--batch_size", help='sst: 64, cfimdb: 8 can fit a 12GB GPU', type=int, default=8)
 	parser.add_argument("--hidden_dropout_prob", type=float, default=0.3)
 	parser.add_argument("--lr", type=float, help="learning rate, default lr for 'pretrain': 1e-3, 'finetune': 1e-5",
-						default=1e-5)
+						default=2e-5)
 
 	args = parser.parse_args()
 	print(f"args: {vars(args)}")
