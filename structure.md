@@ -76,7 +76,7 @@ There are a few slight variations on AdamW, pleae note the following:
 You can check your optimizer implementation using `optimizer_test.py`.
 
 ## rope.py (to be implemented)
-Here, you will implement rotary positional embeddings. This may be tricky; you can refer to slide 22 in https://phontron.com/class/anlp2024/assets/slides/anlp-05-transformers.pdf and https://blog.eleuther.ai/rotary-embeddings/ for reference. To enable you to test this component modularly, we've provided a unit test at `RoPE_test.py`
+Here, you will implement rotary positional embeddings. This may be tricky; you can refer to slide 22 in https://phontron.com/class/anlp2024/assets/slides/anlp-05-transformers.pdf and Section 3 in https://arxiv.org/abs/2104.09864 for reference. To enable you to test this component modularly, we've provided a unit test at `RoPE_test.py`
 
 ## base_llama.py
 This is the base class for the Llama model. You won't need to modify this file in this assignment.

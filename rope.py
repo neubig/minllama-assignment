@@ -33,10 +33,9 @@ def apply_rotary_emb(
     """
     Apply rotary embeddings to input tensors using the given frequency tensor.
 
-    This function applies rotary embeddings to the given query 'xq' and key 'xk' tensors using the provided
-    frequency tensor 'freqs_cis'. The input tensors are reshaped as complex numbers, and the frequency tensor
-    is reshaped for broadcasting compatibility. The resulting tensors contain rotary embeddings and are
-    returned as real tensors.
+    This function applies rotary embeddings to the given query and key tensors. The rotation to each token
+    embedding is a function of that token's position in the sequence, head_dim, and theta.
+    The input tensors are reshaped as complex numbers to simplify your implementation.
 
     Args:
         query (torch.Tensor): Query tensor to apply rotary embeddings.
@@ -53,8 +52,8 @@ def apply_rotary_emb(
     device = query.device
     # todo
     #
-    # Please refer to slide 22 in https://phontron.com/class/anlp2024/assets/slides/anlp-05-transformers.pdf.
-    # You may also benefit from https://blog.eleuther.ai/rotary-embeddings/.
+    # Please refer to slide 22 in https://phontron.com/class/anlp2024/assets/slides/anlp-05-transformers.pdf
+    # and Section 3 in https://arxiv.org/abs/2104.09864.
 
     # reshape xq and xk to match the complex representation
     query_real, query_imag = query.float().reshape(query.shape[:-1] + (-1, 2)).unbind(-1)
