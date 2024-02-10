@@ -10,6 +10,7 @@ required_files = {'run_llama.py',
                   'llama.py',
                   'optimizer.py',
                   'classifier.py',
+                  'rope.py',
                   'generated-sentence-temp-0.txt',
                   'generated-sentence-temp-1.txt',
                   'sst-dev-prompting-output.txt',
@@ -45,7 +46,7 @@ def check_file(file: str, check_aid: str):
         # --
     # --
     required_files.difference_update(inside_files)
-    assert len(required_files)==0, f"Required file not found: {required_files}"
+    assert len(required_files)==0, f"Some required files are missing: {required_files}"
     # --
     assert target_prefix[:-1] == check_aid, f"AndrewID mismatched: {target_prefix[:-1]} vs {check_aid}"
     print(f"Read zipfile {file}, please check that your andrew-id is: {target_prefix[:-1]}")
@@ -67,7 +68,7 @@ def main(path: str, aid: str):
                     zz.write(ff, os.path.join(".", aid, rpath))
                     if rpath in required_files:
                         required_files.remove(rpath)
-        assert len(required_files) == 0, f"Some required files are missing: {required_files}"
+        assert len(required_files) == 0, breakpoint()
         # --
         print(f"Submission zip file created from DIR={path} for {aid}: {aid}.zip")
         check_file(f'{aid}.zip', aid)
