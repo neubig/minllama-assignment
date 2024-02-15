@@ -21,13 +21,9 @@ Once you have implemented these components, you will test our your model in 3 se
 * Follow `setup.sh` to properly setup the environment and install dependencies.
 * There is a detailed description of the code structure in [structure.md](./structure.md), including a description of which parts you will need to implement.
 * You are only allowed to use libraries that are installed by `setup.sh`, no other external libraries are allowed (e.g., `transformers`).
-* We will run your code with the following commands, so make sure that whatever your best results are reproducible using these commands (where you replace ANDREWID with your lowercase Andrew ID):
+* We will run your code with commands below (under "Reference outputs/accuracies"), so make sure that whatever your best results are reproducible using these commands.
     * Do not change any of the existing command options (including defaults) or add any new required parameters
-```
-mkdir -p ANDREWID
 
-python3 run_llama.py --option [generate/prompt/finetune] --epochs 5 --lr 2e-5 --train data/sst-train.txt --dev data/sst-dev.txt --test data/sst-test.txt
-```
 ## Reference outputs/accuracies: 
 
 *Text Continuation* (`python run_llama.py --option generate`)
