@@ -37,9 +37,9 @@ The desired outputs are
 
 ### To be implemented
 Components that require your implementations are comment with ```#todo```. The detailed instructions can be found in their corresponding code blocks
-* ```llama.Attention.forward```
+* ```llama.Attention.compute_query_key_value_scores```
 * ```llama.RMSNorm.norm```
-* ```llama.Llama.forward```
+* ```llama.LlamaLayer.forward```
 * ```llama.Llama.generate```
 * ```rope.apply_rotary_emb``` (this one may be tricky! you can use `rope_test.py` to test your implementation)
 * ```optimizer.AdamW.step```
