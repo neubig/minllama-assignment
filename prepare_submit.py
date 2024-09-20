@@ -22,6 +22,11 @@ required_files = {'run_llama.py',
                   'cfimdb-dev-finetuning-output.txt',
                   'cfimdb-test-finetuning-output.txt'}
 
+optional_files = {'sst-dev-advanced-output.txt',
+                  'sst-test-advanced-output.txt',
+                  'cfimdb-dev-advanced-output.txt',
+                  'cfimdb-test-advanced-output.txt'}
+
 def check_file(file: str, check_aid: str):
     target_prefix = None
     # --
@@ -45,12 +50,17 @@ def check_file(file: str, check_aid: str):
             inside_files.add(ff)
         # --
     # --
-    required_files.difference_update(inside_files)
-    assert len(required_files)==0, f"Some required files are missing: {required_files}"
+    required_files -= inside_files
+    combined_files = required_files | optional_files
+    combined_files -= inside_files
+      
+    assert len(required_files) != 0, f"Some required files are missing: {required_files}"
     # --
     assert target_prefix[:-1] == check_aid, f"AndrewID mismatched: {target_prefix[:-1]} vs {check_aid}"
     print(f"Read zipfile {file}, please check that your andrew-id is: {target_prefix[:-1]}")
     print(f"And it contains the following files: {sorted(list(inside_files))}")
+    # -- OPTIONAL CHECK --
+    assert len(combined_files) not in [4,0], f"[Optional check] Some of your advanced outputs are missing: {combined_files}"
     # --
 
 def main(path: str, aid: str):

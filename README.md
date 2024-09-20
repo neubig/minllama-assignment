@@ -92,10 +92,14 @@ ANDREWID/
 ├── sanity_check.data
 ├── generated-sentence-temp-0.txt
 ├── generated-sentence-temp-1.txt
+├── [OPTIONAL] sst-dev-advanced-output.txt
+├── [OPTIONAL] sst-test-advanced-output.txt
 ├── sst-dev-prompting-output.txt
 ├── sst-test-prompting-output.txt
 ├── sst-dev-finetuning-output.txt
 ├── sst-test-finetuning-output.txt
+├── [OPTIONAL] cfimdb-dev-advanced-output.txt
+├── [OPTIONAL] cfimdb-test-advanced-output.txt
 ├── cfimdb-dev-prompting-output.txt
 ├── cfimdb-test-prompting-output.txt
 ├── cfimdb-dev-finetuning-output.txt
@@ -118,7 +122,7 @@ students lose a 1/3 letter grade because of an improper submission format.
 
 
 ### Grading
-* A+: You additionally implement something else on top of the requirements for A, and achieve significant accuracy improvements or demonstrate exceptional creativity. This improvement can be in either the zero-shot setting (no task-specific finetuning required) or in the finetuning setting (improving over our current finetuning implementation). Please write down the things you implemented and experiments you performed in the report. You are also welcome to provide additional materials such as commands to run your code in a script and training logs.
+* A+: (Advanced implementation) You additionally implement something else on top of the requirements for A, and achieve significant accuracy improvements or demonstrate exceptional creativity. This improvement can be in either the zero-shot setting (no task-specific finetuning required) or in the finetuning setting (improving over our current finetuning implementation). Please write down the things you implemented and experiments you performed in the report. You are also welcome to provide additional materials such as commands to run your code in a script and training logs.
     * perform [continued pre-training](https://arxiv.org/abs/2004.10964) using the language modeling objective to do domain adaptation
     * enable zero-shot prompting using a more principled inference algorithm than our current implementation. For example, we did not include an attention mask despite right-padding all inputs (to enable batch prediction); this could be improved.
     * perform [prompt-based finetuning](https://arxiv.org/abs/2109.01247)
