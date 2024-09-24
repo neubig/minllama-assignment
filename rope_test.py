@@ -2,6 +2,7 @@ import torch
 import numpy as np
 
 from rope import apply_rotary_emb
+from typing import Tuple
 
 seed = 0
 
@@ -17,7 +18,7 @@ def construct_key() -> torch.Tensor:
     '''
     return 3 * torch.ones([1, 2, 2, 4])
 
-def test_apply_rotary_emb() -> tuple[torch.Tensor, torch.Tensor]:
+def test_apply_rotary_emb() -> Tuple[torch.Tensor, torch.Tensor]:
     rng = np.random.default_rng(seed)
     torch.manual_seed(seed)
     model = torch.nn.Linear(3, 2, bias=False)

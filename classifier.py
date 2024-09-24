@@ -6,9 +6,10 @@ import torch.nn.functional as F
 from config import LlamaConfig
 from llama import load_pretrained
 from tokenizer import Tokenizer
+from typing import List
 
 class LlamaZeroShotClassifier(torch.nn.Module):
-	def __init__(self, config: LlamaConfig, tokenizer: Tokenizer, label_names: list[str]):
+	def __init__(self, config: LlamaConfig, tokenizer: Tokenizer, label_names: List[str]):
 		super(LlamaZeroShotClassifier, self).__init__()
 		self.num_labels = config.num_labels
 		self.llama = load_pretrained(config.pretrained_model_path)
