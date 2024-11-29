@@ -6,3 +6,4 @@
 llama.Attention.forward
 llama.RMSNorm.norm
 optimizer.AdamW.step
+ごめんなさい
