@@ -44,7 +44,11 @@ class RMSNorm(torch.nn.Module):
             torch.Tensor: The normalized tensor.
         """
         # todo
-        raise NotImplementedError
+        # (bs, seqlen, dim) または (seqlen, dim) の最後の次元でRMSを計算
+        # dim: -1
+        rms = torch.rsqrt(x.pow(2).mean(-1, keepdim=True) + self.eps)
+        return x * rms
+        #raise NotImplementedError
 
     def forward(self, x):
         """
@@ -94,7 +98,22 @@ class Attention(nn.Module):
         attention matrix before applying it to the value tensor.
         '''
         # todo
-        raise NotImplementedError
+        # head_dim の平方根でスケーリング
+        scale = 1.0 / math.sqrt(self.head_dim)
+        
+        # 1. 注意スコア: (bs, n_heads, seqlen, seqlen)
+        scores = torch.matmul(query, key.transpose(-2, -1)) * scale
+
+        # 2. Softmax
+        attn_weights = F.softmax(scores.float(), dim=-1).type_as(query)
+
+        # 3. ドロップアウト
+        attn_weights = self.attn_dropout(attn_weights)
+        
+        # 4. バリューの適用
+        output = torch.matmul(attn_weights, value)
+        return output
+        #raise NotImplementedError
 
     def forward(
         self,
@@ -197,7 +216,14 @@ class LlamaLayer(nn.Module):
            output of the feed-forward network
         '''
         # todo
-        raise NotImplementedError
+        # 1) RMSNorm -> Attention -> Residual
+        h = x + self.attention(self.attention_norm(x))
+        
+        # 2) RMSNorm -> FFN -> Residual
+        out = h + self.feed_forward(self.ffn_norm(h))
+        
+        return out
+        #raise NotImplementedError
 
 class Llama(LlamaPreTrainedModel):
     def __init__(self, config: LlamaConfig):
@@ -274,6 +300,34 @@ class Llama(LlamaPreTrainedModel):
             logits, _ = self(idx_cond)
             logits = logits[:, -1, :] # crop to just the final time step
             # todo
+
+            if temperature == 0.0:
+                # select the single most likely index (Greedy)
+                # torch.argmax()を使用
+                idx_next = torch.argmax(logits, dim=-1, keepdim=True)
+            else:
+                '''
+                Perform temperature sampling:
+                1) scale (divide) these probabilities by the given temperature.
+                2) normalize the scaled logits with a softmax to obtain scaled probabilities.
+                3) sample from the scaled probability distribution.
+                '''
+                # 1. スケーリング
+                logits = logits / temperature
+                
+                # 2. Softmax (確率分布)
+                probs = F.softmax(logits, dim=-1)
+                
+                # 3. サンプリング (多項分布からのサンプリング)
+                # torch.multinomialでサンプリングし、形状を整える
+                idx_next = torch.multinomial(probs, num_samples=1)
+                
+            # append sampled index to the running sequence and continue
+            idx = torch.cat((idx, idx_next), dim=1)
+
+
+        return idx
+        """
             raise NotImplementedError
 
             if temperature == 0.0:
@@ -295,6 +349,7 @@ class Llama(LlamaPreTrainedModel):
 
 
         return idx
+        """
 
 def load_pretrained(checkpoint):
   device = 'cuda' if torch.cuda.is_available() else 'cpu' # examples: 'cpu', 'cuda', 'cuda:0', 'cuda:1', etc.

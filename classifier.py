@@ -55,4 +55,30 @@ class LlamaEmbeddingClassifier(torch.nn.Module):
 		3) Take the log-softmax of the logits and return log-probabilities over all classes.
 		'''
 		# todo
-		raise NotImplementedError
+		#raise NotImplementedError
+
+
+        
+        # 1) LLaMAモデルを実行し、隠れ状態（hidden_states）を取得
+        # self.llama(input_ids) は (logits, hidden_states) を返します
+		_, hidden_states = self.llama(input_ids)
+        
+        # LLaMA/Transformerモデルからの隠れ状態の形状: (batch_size, seq_len, dim)
+        
+        # 1) Find the hidden state after the final token of the input sequence
+        # テキスト分類では通常、シーケンスの最後のトークン（パディングを除く）または[CLS]トークンの
+        # 隠れ状態を使います。ここではシーケンスの最後の要素を使用します。
+        # [:, -1, :] で、シーケンスの最後の位置の埋め込みを取得します。
+		last_hidden_state = hidden_states[:, -1, :] 
+        # 形状: (batch_size, dim)
+        
+        # 2) Apply dropout (self.dropout)
+		pooled_output = self.dropout(last_hidden_state)
+        
+        # 3) Pass this through the classifier head (self.classifier_head)
+		logits = self.classifier_head(pooled_output)
+        # 形状: (batch_size, num_labels)
+        
+        # 4) Take the log-softmax of the logits and return log-probabilities
+		log_probabilities = F.log_softmax(logits, dim=-1)
+		return log_probabilities
